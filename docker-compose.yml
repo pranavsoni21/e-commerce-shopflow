@@ -1,0 +1,112 @@
+# ─────────────────────────────────────────────
+# ShopFlow — Local Development Stack
+# Run: docker compose up --build
+# ─────────────────────────────────────────────
+
+services:
+
+  # ── Databases ──────────────────────────────
+  postgres-user:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: shopflow
+      POSTGRES_PASSWORD: localpassword
+      POSTGRES_DB: userdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata-user:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shopflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  postgres-product:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: shopflow
+      POSTGRES_PASSWORD: localpassword
+      POSTGRES_DB: productdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata-product:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shopflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  postgres-order:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: shopflow
+      POSTGRES_PASSWORD: localpassword
+      POSTGRES_DB: orderdb
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata-order:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shopflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Microservices ───────────────────────────
+  user-svc:
+    build:
+      context: ./services/user
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: postgresql://shopflow:localpassword@postgres-user:5432/userdb
+      JWT_SECRET: local-dev-secret-change-in-prod
+    depends_on:
+      postgres-user:
+        condition: service_healthy
+    restart: on-failure
+
+  product-svc:
+    build:
+      context: ./services/product
+    ports:
+      - "8002:8000"
+    environment:
+      DATABASE_URL: postgresql://shopflow:localpassword@postgres-product:5432/productdb
+    depends_on:
+      postgres-product:
+        condition: service_healthy
+    restart: on-failure
+
+  order-svc:
+    build:
+      context: ./services/order
+    ports:
+      - "8003:8000"
+    environment:
+      DATABASE_URL: postgresql://shopflow:localpassword@postgres-order:5432/orderdb
+      NOTIFICATION_SVC_URL: http://notification-svc:8000
+    depends_on:
+      postgres-order:
+        condition: service_healthy
+      notification-svc:
+        condition: service_started
+    restart: on-failure
+
+  notification-svc:
+    build:
+      context: ./services/notification
+    ports:
+      - "8004:8000"
+    environment:
+      AWS_REGION: us-east-1
+      SES_SENDER_EMAIL: noreply@shopflow.com
+      # In local dev, SES calls will be logged not sent (no real AWS creds)
+    restart: on-failure
+
+volumes:
+  pgdata-user:
+  pgdata-product:
+  pgdata-order:
