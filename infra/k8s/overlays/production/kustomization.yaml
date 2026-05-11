@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base/namespace.yaml
+  - ../../base/user-svc
+  - ../../base/product-svc
+  - ../../base/order-svc
+  - ../../base/notification-svc
+
+images:
+  - name: ecr-url/shopflow/user
+    newTag: "latest"
+  - name: ecr-url/shopflow/product
+    newTag: "latest"
+  - name: ecr-url/shopflow/order
+    newTag: "latest"
+  - name: ecr-url/shopflow/notification
+    newTag: "latest"
