@@ -19,7 +19,7 @@ spec:
         app: user-svc
         version: "1.0"
         part-of: shopflow
-        managed_by: argocd
+        managed_by: argo-cd
     spec:
       serviceAccountName: user-sa
       containers:

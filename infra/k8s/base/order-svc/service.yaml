@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-svc
+  namespace: shopflow
+  labels:
+    app: order-svc
+    version: "1.0"
+    part-of: shopflow
+    managed-by: argocd
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+
+  selector:
+    app: order-svc

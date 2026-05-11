@@ -5,7 +5,7 @@ terraform {
       version = ">=5.11.0"
     }
   }
-  required_version = "1.14.4"
+  required_version = "~>1.14.8"
   cloud {
     organization = "fort-hcp"
     workspaces {
