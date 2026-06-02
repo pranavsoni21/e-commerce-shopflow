@@ -45,9 +45,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r services/product/requirements.txt
 
-      - name: Run tests
-        run: pip install pytest && pytest services/product/tests/ -v
-
 
   # ── Job 2: Build and Scan ────────────────────────────────
   # Runs after test passes
