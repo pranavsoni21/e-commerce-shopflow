@@ -2,18 +2,21 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../base/namespace.yaml
-  - ../../base/user-svc
-  - ../../base/product-svc
-  - ../../base/order-svc
-  - ../../base/notification-svc
+- ../../base/namespace.yaml
+- ../../base/user-svc
+- ../../base/product-svc
+- ../../base/order-svc
+- ../../base/notification-svc
 
 images:
-  - name: ecr-url/shopflow/user
-    newTag: "latest"
-  - name: ecr-url/shopflow/product
-    newTag: "latest"
-  - name: ecr-url/shopflow/order
-    newTag: "latest"
-  - name: ecr-url/shopflow/notification
-    newTag: "latest"
+- name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
+  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
+  newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
+- name: ecr-url/shopflow/notification
+  newTag: latest
+- name: ecr-url/shopflow/order
+  newTag: latest
+- name: ecr-url/shopflow/product
+  newTag: latest
+- name: ecr-url/shopflow/user
+  newTag: latest
