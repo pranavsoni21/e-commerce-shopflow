@@ -9,6 +9,9 @@ resources:
 - ../../base/notification-svc
 
 images:
+- name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
+  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
+  newTag: 667bb2e339baec8ae0263d3f156607b124714521
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
   newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
   newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
