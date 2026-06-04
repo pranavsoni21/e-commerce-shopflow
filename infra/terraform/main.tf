@@ -8,10 +8,10 @@ locals {
 }
 
 # VPC
-module "vpc" {
+/*module "vpc" {
   source = "./modules/vpc"
   tags   = local.tags
-}
+}*/
 
 # ECR
 module "ecr" {
