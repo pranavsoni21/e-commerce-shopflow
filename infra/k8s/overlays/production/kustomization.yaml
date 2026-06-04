@@ -20,7 +20,7 @@ images:
   newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
-  newTag: 3398280469530547c770df653f9cfa55e5c10835
+  newTag: 4b6cf5000000731d907364bb822e40ed6c631e31
 - name: ecr-url/shopflow/notification
   newTag: latest
 - name: ecr-url/shopflow/order
