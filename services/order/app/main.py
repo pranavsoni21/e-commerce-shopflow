@@ -18,4 +18,4 @@ app.include_router(router, prefix="/api/v1")
 
 @app.get("/health")
 def health():
-    return {"status": "healthy", "service": "order-svc"}
+    return {"status": "healthy", "service": "order-svc", "from": "order-svc"}

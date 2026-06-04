@@ -21,9 +21,6 @@ resource "aws_eks_node_group" "eks_node_group" {
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.private_subnet_ids
 
-  ami_type       = "AL2_x86_64"
-  capacity_type  = "ON_DEMAND"
-  disk_size      = 20
   instance_types = ["t3.medium"]
 
   scaling_config {
