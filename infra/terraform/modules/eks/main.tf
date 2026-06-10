@@ -21,7 +21,7 @@ resource "aws_eks_node_group" "eks_node_group" {
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.private_subnet_ids
 
-  instance_types = ["t3.medium"]
+  instance_types = ["t3.micro"]
 
   scaling_config {
     desired_size = 2
