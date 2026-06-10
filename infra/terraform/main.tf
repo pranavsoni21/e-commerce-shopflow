@@ -8,10 +8,10 @@ locals {
 }
 
 # VPC
-/*module "vpc" {
+module "vpc" {
   source = "./modules/vpc"
   tags   = local.tags
-}*/
+}
 
 # ECR
 module "ecr" {
@@ -19,7 +19,7 @@ module "ecr" {
   tags   = local.tags
 }
 
-/*module "eks" {
+module "eks" {
   source = "./modules/eks"
   tags   = local.tags
 
@@ -27,14 +27,14 @@ module "ecr" {
   eks_role_arn       = module.iam.eks_cluster_role_arn
   node_role_arn      = module.iam.eks_node_role_arn
   private_subnet_ids = module.vpc.private_subnets_id
-}*/
+}
 
-/*module "kms" {
+module "kms" {
   source = "./modules/kms"
   tags   = local.tags
-}*/
+}
 
-/*module "iam" {
+module "iam" {
   source = "./modules/iam"
   tags                = local.tags
 
@@ -45,9 +45,9 @@ module "ecr" {
   github_repo         = var.github_repo
   oidc_provider_arn   = module.eks.oidc_provider_arn
   oidc_provider_url   = module.eks.oidc_provider_url
-}*/
+}
 
-/*module "rds" {
+module "rds" {
   source = "./modules/rds"
   tags   = local.tags
 
@@ -57,5 +57,5 @@ module "ecr" {
   kms_key_arn                = module.kms.rds_key_arn
   private_subnet_ids         = module.vpc.private_subnets_id
   vpc_id                     = module.vpc.vpc_id
-}*/
+}
 
