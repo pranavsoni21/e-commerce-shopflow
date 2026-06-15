@@ -29,7 +29,7 @@ spec:
           image: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notificationL:latest
           imagePullPolicy: Always
           ports:
-            containerPort: 8000
+            - containerPort: 8000
           env:
           - name: AWS_REGION
             value: "ap-south-1"
