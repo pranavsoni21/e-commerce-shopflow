@@ -24,7 +24,7 @@ spec:
       serviceAccountName: user-sa
       containers:
         - name: user-svc
-          image: ecr-url:tag
+          image: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
