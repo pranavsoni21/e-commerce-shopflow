@@ -29,13 +29,6 @@ output "ebs_csi_role_arn" {
   value       = aws_iam_role.ebs_csi_role.arn
 }
 
-# ── Consumed by Vault Helm chart values ──────────────────────
-
-output "vault_role_arn" {
-  description = "Annotate Vault's service account with this ARN"
-  value       = aws_iam_role.vault_role.arn
-}
-
 # ── Consumed by GitHub Actions secret ────────────────────────
 
 output "github_actions_role_arn" {
