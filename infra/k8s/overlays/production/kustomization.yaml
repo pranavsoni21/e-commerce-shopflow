@@ -1,31 +1,18 @@
+# infra/k8s/overlays/production/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 resources:
-- ../../base/namespace.yaml
+- namespace.yaml
 - ../../base/user-svc
 - ../../base/product-svc
 - ../../base/order-svc
 - ../../base/notification-svc
-
 images:
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
-  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
   newTag: 5222f5fa2c5fdffc7aac3f2f1f5b2d5dfd587bd2
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
-  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
   newTag: 1dc6e34635a84472f24fd0d3fc75dc0fc10a420e
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
-  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
   newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
-  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newTag: 4b6cf5000000731d907364bb822e40ed6c631e31
-- name: ecr-url/shopflow/notification
-  newTag: latest
-- name: ecr-url/shopflow/order
-  newTag: latest
-- name: ecr-url/shopflow/product
-  newTag: latest
-- name: ecr-url/shopflow/user
-  newTag: latest

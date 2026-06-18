@@ -1,0 +1,35 @@
+# infra/argocd/notification-svc-app.yaml
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application          # ArgoCD's own resource type
+metadata:
+  name: notification-svc
+  namespace: argocd        # Application itself lives in argocd namespace
+  labels:
+    part-of: shopflow
+
+spec:
+  project: default         # ArgoCD project — use default for now
+
+  # ── Where is the code? ──────────────────────────
+  source:
+    repoURL: https://github.com/pranavsoni21/e-commerce-shopflow   # your repo
+    targetRevision: main                            # which branch
+    path: infra/k8s/overlays/production             # which folder
+    # ArgoCD runs kustomize build on this path automatically
+    # because it detects kustomization.yaml inside
+
+  # ── Where to deploy? ────────────────────────────
+  destination:
+    server: https://kubernetes.default.svc   # this cluster
+    namespace: shopflow                       # deploy into shopflow ns
+
+  # ── How to sync? ────────────────────────────────
+  syncPolicy:
+    automated:
+      prune: true       # delete resources removed from Git
+      selfHeal: true    # revert manual kubectl changes
+
+    syncOptions:
+      - CreateNamespace=true    # creates shopflow ns if it doesn't exist
+      - PrunePropagationPolicy=foreground  # wait for resources to delete
