@@ -15,12 +15,6 @@ variable "oidc_provider_url" {
   type        = string
 }
 
-# From KMS module (created separately for Vault auto-unseal)
-variable "kms_key_arn" {
-  description = "ARN of the KMS key used by Vault for auto-unseal"
-  type        = string
-}
-
 # From ECR module output
 variable "ecr_repository_arns" {
   description = "List of ECR repository ARNs GitHub Actions can push to"

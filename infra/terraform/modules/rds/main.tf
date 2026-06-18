@@ -39,11 +39,11 @@ resource "aws_security_group" "rds_sg" {
   # This means even other resources inside your VPC can't reach RDS
   # unless they're EKS nodes
   ingress {
-    description     = "PostgreSQL from EKS nodes"
-    from_port       = 5432
-    to_port         = 5432
-    protocol        = "tcp"
-    security_groups = [var.eks_node_security_group_id]
+    description = "PostgreSQL from EKS nodes"
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
   }
 
   # Outbound: allow all — RDS needs to reach AWS services
@@ -72,8 +72,8 @@ resource "aws_security_group" "rds_sg" {
 
 resource "aws_db_parameter_group" "rds_params" {
   name        = "${var.tags["ProjectName"]}-rds-params"
-  family      = "postgres15"
-  description = "Custom parameter group for ShopFlow PostgreSQL 15"
+  family      = "postgres18"
+  description = "Custom parameter group for ShopFlow PostgreSQL 18"
 
   # Log slow queries — anything over 1 second gets logged
   # Useful for debugging performance issues in Grafana (Phase 7)
@@ -85,7 +85,7 @@ resource "aws_db_parameter_group" "rds_params" {
   # Log all connections — helps with debugging auth issues
   parameter {
     name  = "log_connections"
-    value = "1"
+    value = "all"
   }
 
   tags = merge(var.tags, {
@@ -107,7 +107,7 @@ resource "aws_db_instance" "shopflow_db" {
 
   # Engine
   engine         = "postgres"
-  engine_version = "15.5"
+  engine_version = "18.3"
   instance_class = "db.t3.micro"
 
   # Storage
@@ -116,7 +116,6 @@ resource "aws_db_instance" "shopflow_db" {
   max_allocated_storage = 100 # autoscaling ceiling — won't exceed this
   storage_type          = "gp3"
   storage_encrypted     = true
-  kms_key_id            = var.kms_key_arn
 
   # Credentials
   # This is the master user — each service gets its own user/password
@@ -134,12 +133,6 @@ resource "aws_db_instance" "shopflow_db" {
   parameter_group_name = aws_db_parameter_group.rds_params.name
   multi_az             = false # single-AZ for cost — set true for production
   port                 = 5432
-
-  # Backups
-  # 7 day retention — lets you restore to any point in the last week
-  backup_retention_period = 7
-  backup_window           = "03:00-04:00"         # 3-4am UTC, low traffic window
-  maintenance_window      = "Mon:04:00-Mon:05:00" # after backup window
 
   # Safety
   # Prevents accidental deletion via terraform destroy

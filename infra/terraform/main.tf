@@ -29,16 +29,10 @@ module "eks" {
   private_subnet_ids = module.vpc.private_subnets_id
 }
 
-module "kms" {
-  source = "./modules/kms"
-  tags   = local.tags
-}
-
 module "iam" {
   source = "./modules/iam"
-  tags                = local.tags
+  tags   = local.tags
 
-  kms_key_arn         = module.kms.vault_unseal_key_arn
   ecr_repository_arns = module.ecr.ecr_repository_arns
   eks_cluster_arn     = module.eks.eks_cluster_arn
   github_org          = var.github_org
@@ -54,7 +48,6 @@ module "rds" {
   db_password                = var.db_password
   db_username                = var.db_username
   eks_node_security_group_id = module.eks.node_security_group_id
-  kms_key_arn                = module.kms.rds_key_arn
   private_subnet_ids         = module.vpc.private_subnets_id
   vpc_id                     = module.vpc.vpc_id
 }

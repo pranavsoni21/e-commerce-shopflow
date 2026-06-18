@@ -28,10 +28,3 @@ output "ebs_csi_role_arn" {
   description = "Pass to aws_eks_addon ebs-csi-driver as service_account_role_arn"
   value       = aws_iam_role.ebs_csi_role.arn
 }
-
-# ── Consumed by GitHub Actions secret ────────────────────────
-
-output "github_actions_role_arn" {
-  description = "Set as AWS_ROLE_ARN secret in GitHub repository settings"
-  value       = aws_iam_role.github_actions_role.arn
-}

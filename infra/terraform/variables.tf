@@ -9,23 +9,23 @@ variable "environment" {
 }
 
 variable "github_org" {
-  type = string
+  type    = string
   default = "pranavsoni21"
 }
 
 variable "github_repo" {
-  type = string
+  type    = string
   default = "e-commerce-shopflow"
 }
 
 variable "db_username" {
   type      = string
   sensitive = true
-  default = "admin"
+  default   = "super"
 }
 
 variable "db_password" {
   type      = string
   sensitive = true
-  default = "password"
+  default   = "password"
 }
