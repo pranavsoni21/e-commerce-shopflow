@@ -161,7 +161,6 @@ db_username  = "your-db-username"
 db_password  = "your-strong-password"
 github_org   = "your-github-username"
 github_repo  = "shopflow"
-my_ip_cidr   = "your.ip.address/32"
 ```
 
 ### 3. Apply Terraform
