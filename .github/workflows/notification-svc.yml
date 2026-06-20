@@ -90,7 +90,7 @@ jobs:
           echo "Pushed: $FULL_IMAGE"
 
 
-  # ── Job 4: Update Manifest ───────────────────────────────
+  # ── Job 3: Update Manifest ───────────────────────────────
   # Updates the image tag in the k8s overlay
   # ArgoCD detects this commit and deploys the new image
   update-manifest:
