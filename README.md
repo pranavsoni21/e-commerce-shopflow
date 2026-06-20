@@ -220,16 +220,16 @@ RDS_HOST=$(terraform output -raw db_host)
 
 kubectl create secret generic user-svc-secrets \
   --namespace=shopflow \
-  --from-literal=database_url="postgresql://user:pass@${RDS_HOST}:5432/userdb?sslmode=require" \
+  --from-literal=database_url="postgresql://{db_username}:{db_password}@${RDS_HOST}:5432/userdb?sslmode=require" \
   --from-literal=jwt_secret="your-jwt-secret"
 
 kubectl create secret generic product-svc-secrets \
   --namespace=shopflow \
-  --from-literal=database_url="postgresql://user:pass@${RDS_HOST}:5432/productdb?sslmode=require"
+  --from-literal=database_url="postgresql://{db_username}:{db_password}@${RDS_HOST}:5432/productdb?sslmode=require"
 
 kubectl create secret generic order-svc-secrets \
   --namespace=shopflow \
-  --from-literal=database_url="postgresql://user:pass@${RDS_HOST}:5432/orderdb?sslmode=require"
+  --from-literal=database_url="postgresql://{db_username}:{db_password}@${RDS_HOST}:5432/orderdb?sslmode=require"
 
 kubectl create secret generic notification-svc-secrets \
   --namespace=shopflow \
