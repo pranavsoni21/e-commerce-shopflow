@@ -116,7 +116,7 @@ shopflow/
 ## Prerequisites
 
 - AWS CLI configured with appropriate permissions
-- Terraform >= 1.5
+- Terraform ~> 1.14
 - kubectl
 - Docker
 - GitHub account with the repo forked/cloned
