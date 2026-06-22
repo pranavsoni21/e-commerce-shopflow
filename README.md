@@ -17,6 +17,8 @@ A production-grade DevOps portfolio project demonstrating a full cloud-native de
 
 ## Architecture
 
+<img width="2011" height="1401" alt="arch_diagram_shopflow" src="https://github.com/user-attachments/assets/236b2bc0-a4b8-4c7b-8aba-4f1573ad7e08" />
+
 ```
 Developer
     │ git push
