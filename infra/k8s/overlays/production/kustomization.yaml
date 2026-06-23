@@ -7,14 +7,16 @@ resources:
 - ../../base/product-svc
 - ../../base/order-svc
 - ../../base/notification-svc
+- ../../base/frontend
+- ingress.yaml
 images:
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
-  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
   newTag: 46c4415a5f97d1e26935c64d263c818ba7e6d659
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
   newTag: 1dc6e34635a84472f24fd0d3fc75dc0fc10a420e
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
   newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
-  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newTag: a9fb5e4beb50f198fba35e719d199d3820cbe79d
+- name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
+  newTag: latest

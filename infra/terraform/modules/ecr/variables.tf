@@ -9,5 +9,6 @@ variable "repositories_to_create" {
     "2" : "product",
     "3" : "order",
     "4" : "notification"
+    "5" : "frontend"
   }
 }
