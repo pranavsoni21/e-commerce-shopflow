@@ -21,12 +21,6 @@ variable "eks_node_security_group_id" {
   type        = string
 }
 
-# From KMS module output
-variable "kms_key_arn" {
-  description = "KMS key ARN for RDS storage encryption"
-  type        = string
-}
-
 # Credentials — pass these from root tfvars, never hardcode
 # In production these are bootstrapped once then Vault takes over rotation
 variable "db_username" {
