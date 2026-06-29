@@ -5,4 +5,5 @@ output "db_host" {
 
 output "db_connection_strings" {
   value = module.rds.connection_strings
+  sensitive = true
 }
