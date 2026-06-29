@@ -5,7 +5,7 @@ from app.database import engine, Base
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="ShopFlow User Service", version="1.0.0")
+app = FastAPI(title="ShopFlow User Service s", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
