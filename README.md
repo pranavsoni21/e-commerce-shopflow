@@ -101,6 +101,7 @@ shopflow/
 │   │       └── staging/    # Staging replica counts
 │   └── argocd/             # ArgoCD Application manifests
 │       ├── root-app.yaml   # App of Apps — deploy this once
+├       ├── frontend-app.yaml
 │       ├── user-svc-app.yaml
 │       ├── product-svc-app.yaml
 │       ├── order-svc-app.yaml
@@ -108,6 +109,7 @@ shopflow/
 └── .github/
     └── workflows/
         ├── user-svc.yml
+        ├── frontend.yml
         ├── product-svc.yml
         ├── order-svc.yml
         └── notification-svc.yml
