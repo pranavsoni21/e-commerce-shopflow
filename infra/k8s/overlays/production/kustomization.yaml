@@ -19,7 +19,8 @@ images:
   newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
   newTag: c03dd6d95390e64740204d90e52237c8037dc74c
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
-  newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
+  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
+  newTag: 61f59a939a77b403962ae01e2f3043f872e2c947
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newTag: 88a64c8709049248440621f2d990000ab42992f8
