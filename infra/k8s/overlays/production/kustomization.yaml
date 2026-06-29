@@ -10,6 +10,9 @@ resources:
 - ../../base/frontend
 - ingress.yaml
 images:
+- name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
+  newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
+  newTag: b94d3067f8c9bbdc2d1c47c62edad9395556d6ff
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
   newTag: 46c4415a5f97d1e26935c64d263c818ba7e6d659
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
@@ -18,5 +21,3 @@ images:
   newTag: 875ea222d1a9e32fec06728c0698f9f2c39e46a5
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newTag: a9fb5e4beb50f198fba35e719d199d3820cbe79d
-- name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
-  newTag: latest
