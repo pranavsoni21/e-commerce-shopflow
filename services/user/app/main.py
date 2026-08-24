@@ -5,7 +5,7 @@ from app.database import engine, Base
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="ShopFlow User Service", version="1.0.0")
+app = FastAPI(title="ShopFlow User Service s", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -14,7 +14,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(router, prefix="/api/v1")
+app.include_router(router, prefix="/api/users")
 
 @app.get("/health")
 def health():
