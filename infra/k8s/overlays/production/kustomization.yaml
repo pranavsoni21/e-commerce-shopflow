@@ -10,6 +10,9 @@ resources:
 - ../../base/frontend
 - ingress.yaml
 images:
+- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
+  newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
+  newTag: f9c9582ad4e0ffc6c2e0fe4234d6fc390d9d7837
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newTag: b94d3067f8c9bbdc2d1c47c62edad9395556d6ff
