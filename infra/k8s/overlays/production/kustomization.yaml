@@ -13,6 +13,9 @@ images:
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newTag: f9c9582ad4e0ffc6c2e0fe4234d6fc390d9d7837
+- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
+  newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
+  newTag: 9d3568e4a8887cc5c0e3d7f9d81c85e5bd3f98e1
 - name: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newName: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newTag: b94d3067f8c9bbdc2d1c47c62edad9395556d6ff
