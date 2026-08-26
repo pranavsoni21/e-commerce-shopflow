@@ -22,6 +22,10 @@ env:
   ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
   IMAGE_NAME: shopflow/order
 
+concurrency:
+  group: update-k8s-manifest-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
 
 
