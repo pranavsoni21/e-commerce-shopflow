@@ -121,4 +121,6 @@ jobs:
 
           git add infra/k8s/overlays/production/kustomization.yaml
           git commit -m "ci: update product-svc image to ${{ github.sha }} [skip ci]"
+          
+          git pull --rebase origin main
           git push
