@@ -1,3 +1,4 @@
 .venv/*
 .idea/*
 infra/terraform/.terraform/*
+infra/terraform/monitoring.pem.pub

@@ -19,8 +19,8 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = var.azs[index(keys(var.public_sub_cidr), each.key)]
 
   tags = merge(var.tags, {
-    Name                                               = "${var.tags["ProjectName"]}-${each.key}"
-    "kubernetes.io/role/elb"                           = "1"
+    Name                                                       = "${var.tags["ProjectName"]}-${each.key}"
+    "kubernetes.io/role/elb"                                   = "1"
     "kubernetes.io/cluster/${var.tags["ProjectName"]}-cluster" = "shared"
   })
 }
@@ -33,8 +33,8 @@ resource "aws_subnet" "private_subnet" {
   availability_zone = var.azs[index(keys(var.private_sub_cidr), each.key)]
 
   tags = merge(var.tags, {
-    Name                                               = "${var.tags["ProjectName"]}-${each.key}"
-    "kubernetes.io/role/internal-elb"                  = "1"
+    Name                                                       = "${var.tags["ProjectName"]}-${each.key}"
+    "kubernetes.io/role/internal-elb"                          = "1"
     "kubernetes.io/cluster/${var.tags["ProjectName"]}-cluster" = "shared"
   })
 }
