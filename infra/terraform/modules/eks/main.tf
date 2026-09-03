@@ -1,7 +1,7 @@
 # Create eks cluster
 resource "aws_eks_cluster" "eks_cluster" {
   name     = "${var.tags["ProjectName"]}-cluster"
-  version  = "1.30"
+  version  = "1.36"
   role_arn = var.eks_role_arn
 
   vpc_config {
