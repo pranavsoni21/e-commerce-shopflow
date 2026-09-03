@@ -26,7 +26,7 @@ spec:
       serviceAccountName: product-sa
       containers:
         - name: product-svc
-          image: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product:latest
+          image: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

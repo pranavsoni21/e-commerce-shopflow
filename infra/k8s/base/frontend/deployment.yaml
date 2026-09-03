@@ -24,7 +24,7 @@ spec:
       serviceAccountName: frontend-sa
       containers:
         - name: frontend
-          image: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend:latest
+          image: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -26,7 +26,7 @@ spec:
       serviceAccountName: notification-sa
       containers:
         - name: notification-svc
-          image: 535709431171.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification:latest
+          image: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
