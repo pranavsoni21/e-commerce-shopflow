@@ -7,6 +7,9 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="ShopFlow Order Service", version="1.0.0")
 
+from prometheus_fastapi_instrumentator import Instrumentator
+Instrumentator().instrument(app).expose(app)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

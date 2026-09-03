@@ -4,6 +4,9 @@ from app.routes import router
 
 app = FastAPI(title="ShopFlow Notification Service", version="1.0.0")
 
+from prometheus_fastapi_instrumentator import Instrumentator
+Instrumentator().instrument(app).expose(app)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
