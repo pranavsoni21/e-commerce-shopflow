@@ -12,30 +12,11 @@ resources:
 images:
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
-  newTag: 8f75410d5d6747a3b1734364f9f77bd3326345fc
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
-  newTag: 8f4663cc0ce9ad947529ffd5b2b6346b7eb53cd0
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
-  newTag: 8f4663cc0ce9ad947529ffd5b2b6346b7eb53cd0
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
-  newTag: 8f4663cc0ce9ad947529ffd5b2b6346b7eb53cd0
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
-  newTag: 8f4663cc0ce9ad947529ffd5b2b6346b7eb53cd0
-- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
-  newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
-  newTag: b94d3067f8c9bbdc2d1c47c62edad9395556d6ff
-- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
-  newTag: 46c4415a5f97d1e26935c64d263c818ba7e6d659
-- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
-  newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
-  newTag: c03dd6d95390e64740204d90e52237c8037dc74c
-- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
-  newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
-  newTag: 61f59a939a77b403962ae01e2f3043f872e2c947
-- name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
-  newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
-  newTag: 88a64c8709049248440621f2d990000ab42992f8
