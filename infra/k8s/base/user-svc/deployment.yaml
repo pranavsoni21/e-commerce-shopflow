@@ -20,6 +20,11 @@ spec:
         version: "1.0"
         part-of: shopflow
         managed_by: argo-cd
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+
     spec:
       serviceAccountName: user-sa
       containers:
