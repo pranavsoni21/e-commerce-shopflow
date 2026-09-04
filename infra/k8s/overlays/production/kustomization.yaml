@@ -9,6 +9,7 @@ resources:
 - ../../base/notification-svc
 - ../../base/frontend
 - ingress.yaml
+- monitoring.yaml
 images:
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
