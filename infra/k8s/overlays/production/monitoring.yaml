@@ -123,7 +123,7 @@ data:
         cluster: shopflow-cluster
 
     remote_write:
-      - url: http://10.0.1.136:9090/api/v1/remote_write
+      - url: http://10.0.1.136:9090/api/v1/write
         queue_config:
           capacity: 10000
           max_shards: 200

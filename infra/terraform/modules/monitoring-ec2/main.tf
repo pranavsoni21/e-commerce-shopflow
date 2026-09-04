@@ -84,8 +84,8 @@ resource "aws_security_group" "monitoring" {
 
   # Allow services to send metrics at port 8000
   ingress {
-    to_port     = 8000
-    from_port   = 8000
+    to_port     = 9090
+    from_port   = 9090
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
