@@ -8,8 +8,8 @@ import logging
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
-SES_SENDER = os.getenv("SES_SENDER_EMAIL", "noreply@shopflow.com")
+AWS_REGION = os.getenv("AWS_REGION", "ap-south-1")
+SES_SENDER = os.getenv("SES_SENDER_EMAIL", "psoniradhe177@gmail.com")
 # In production, user emails come from user-svc lookup.
 # Simulated here for simplicity.
 MOCK_USER_EMAILS = {

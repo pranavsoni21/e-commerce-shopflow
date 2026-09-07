@@ -149,3 +149,59 @@ resource "aws_iam_role_policy_attachment" "ebs_csi_irsa_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 }
 
+
+# ============================================
+# IRSA for notification-svc — SES permissions
+# ============================================
+
+data "aws_iam_policy_document" "notification_svc_ses" {
+  statement {
+    actions = [
+      "ses:SendEmail",
+      "ses:SendRawEmail"
+    ]
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "notification_svc_ses" {
+  name   = "${var.tags["ProjectName"]}-notification-svc-ses-policy"
+  policy = data.aws_iam_policy_document.notification_svc_ses.json
+}
+
+data "aws_iam_policy_document" "notification_svc_trust" {
+  statement {
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    principals {
+      type        = "Federated"
+      identifiers = [var.oidc_provider_url]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(var.oidc_provider_url, "https://", "")}:sub"
+      values   = ["system:serviceaccount:shopflow:notification-sa"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${replace(var.oidc_provider_url, "https://", "")}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+  }
+}
+
+resource "aws_iam_role" "notification_svc" {
+  name               = "${var.tags["ProjectName"]}-notification-svc-role"
+  assume_role_policy = data.aws_iam_policy_document.notification_svc_trust.json
+}
+
+resource "aws_iam_role_policy_attachment" "notification_svc_ses" {
+  role       = aws_iam_role.notification_svc.name
+  policy_arn = aws_iam_policy.notification_svc_ses.arn
+}
+
+output "notification_svc_role_arn" {
+  value = aws_iam_role.notification_svc.arn
+}
