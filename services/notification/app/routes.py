@@ -13,8 +13,8 @@ SES_SENDER = os.getenv("SES_SENDER_EMAIL", "psoniradhe177@gmail.com")
 # In production, user emails come from user-svc lookup.
 # Simulated here for simplicity.
 MOCK_USER_EMAILS = {
-    1: "user1@example.com",
-    2: "user2@example.com",
+    1: "pranavsoni181@gmail.com",
+    2: "psoniradhe177@gmail.com",
 }
 
 
@@ -44,10 +44,8 @@ def send_email_via_ses(to_email: str, subject: str, body: str):
         )
         return response["MessageId"]
     except Exception as e:
-        # In local/dev, SES won't be configured — just log it
-        logger.warning(f"SES not available, logging notification: {body}")
-        logger.info(f"Would send to {to_email}: {subject} — {body}")
-        return "mock-message-id"
+        logger.error(f"SES send failed: {str(e)}")
+        raise
 
 
 @router.post("/notify", response_model=NotificationResponse)
