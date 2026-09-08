@@ -4,6 +4,8 @@ from pydantic import BaseModel
 from typing import List, Optional
 import httpx
 import os
+import logging
+logger = logging.getLogger(__name__)
 
 from app.database import get_db
 from app.models import Order, OrderItem, OrderStatus
@@ -74,13 +76,14 @@ async def create_order(payload: OrderCreate, db: Session = Depends(get_db)):
     # Fire-and-forget notification (don't fail order if notif svc is down)
     try:
         async with httpx.AsyncClient(timeout=2.0) as client:
-            await client.post(f"{NOTIFICATION_SVC_URL}/api/v1/notify", json={
+            response = await client.post(f"{NOTIFICATION_SVC_URL}/api/v1/notify", json={
                 "user_id": payload.user_id,
                 "type": "order_created",
                 "message": f"Your order #{order.id} has been placed successfully."
             })
-    except Exception:
-        pass  # Log in production, don't fail the request
+            logger.info(f"Notification call status: {response.status_code}, body: {response.text}")
+    except Exception as e:
+        logger.error(f"Notification call failed: {str(e)}")
 
     return order
 
