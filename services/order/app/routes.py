@@ -83,7 +83,7 @@ async def create_order(payload: OrderCreate, db: Session = Depends(get_db)):
             })
             logger.info(f"Notification call status: {response.status_code}, body: {response.text}")
     except Exception as e:
-        logger.error(f"Notification call failed: {str(e)}")
+        print(f"NOTIFY FAILED: {str(e)}", flush=True)
 
     return order
 
