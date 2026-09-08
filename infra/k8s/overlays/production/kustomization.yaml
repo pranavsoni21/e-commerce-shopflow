@@ -18,7 +18,7 @@ images:
   newTag: b484dee29bbb23bd6d7b80c93440039519008029
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/order
-  newTag: e7716ea78032cabcb09c28c3afd8219b358222ad
+  newTag: 2b15a4144788acba45ecba03773a80f276c459b1
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/product
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
