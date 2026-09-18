@@ -13,3 +13,18 @@ output "eks_cluster_arn" {
 output "node_security_group_id" {
   value = aws_eks_node_group.eks_node_group.resources[0].remote_access_security_group_id
 }
+
+output "cluster_name" {
+  description = "EKS cluster name"
+  value       = aws_eks_cluster.eks_cluster.name
+}
+
+output "cluster_endpoint" {
+  description = "EKS cluster API endpoint"
+  value       = aws_eks_cluster.eks_cluster.endpoint
+}
+
+output "cluster_certificate_authority_data" {
+  description = "EKS cluster CA certificate"
+  value       = aws_eks_cluster.eks_cluster.certificate_authority[0].data
+}

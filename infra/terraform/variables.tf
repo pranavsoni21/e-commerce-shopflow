@@ -29,3 +29,10 @@ variable "db_password" {
   sensitive = true
   default   = "password"
 }
+
+variable "jwt_secret" {
+  description = "JWT signing secret for user-svc"
+  type        = string
+  sensitive   = true
+  default = "aaaa-bbbbbb-ccccc-dddddd"
+}

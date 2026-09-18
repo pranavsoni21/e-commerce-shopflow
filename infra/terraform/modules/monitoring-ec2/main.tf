@@ -10,7 +10,7 @@ resource "aws_ebs_volume" "monitoring" {
   encrypted         = true
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   tags = merge(var.tags, {
@@ -20,7 +20,7 @@ resource "aws_ebs_volume" "monitoring" {
 
 resource "aws_key_pair" "monitoring" {
   public_key = file("${path.root}/monitoring.pem.pub")
-  key_name = "monitoring-key"
+  key_name   = "monitoring-key"
 }
 
 # EC2 for monitoring
@@ -30,7 +30,7 @@ resource "aws_instance" "monitoring" {
   subnet_id              = var.public_subnet_ids[0]
   availability_zone      = data.aws_subnet.monitoring.availability_zone
   vpc_security_group_ids = [aws_security_group.monitoring.id]
-  key_name = aws_key_pair.monitoring.key_name
+  key_name               = aws_key_pair.monitoring.key_name
 
   user_data_base64 = base64encode(<<-EOF
               #!/bin/bash
@@ -71,7 +71,7 @@ resource "aws_volume_attachment" "monitoring" {
 
 # Security Group
 resource "aws_security_group" "monitoring" {
-  name = "shopflow-monitoring-ec2-sg"
+  name   = "shopflow-monitoring-ec2-sg"
   vpc_id = var.vpc_id
 
   # Allow all outbound
@@ -99,9 +99,9 @@ resource "aws_security_group" "monitoring" {
   }
 
   ingress {
-    to_port = 3000
-    from_port = 3000
-    protocol = "tcp"
+    to_port     = 3000
+    from_port   = 3000
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 

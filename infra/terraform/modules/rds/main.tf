@@ -127,7 +127,7 @@ resource "aws_db_instance" "shopflow_db" {
   # Networking
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
-  publicly_accessible    = true # never expose RDS to internet
+  publicly_accessible    = true
 
   # Configuration
   parameter_group_name = aws_db_parameter_group.rds_params.name
@@ -136,7 +136,6 @@ resource "aws_db_instance" "shopflow_db" {
 
   # Safety
   # Prevents accidental deletion via terraform destroy
-  # Set to false only when you intentionally want to destroy
   deletion_protection = false # keep false for dev, set true for production
   skip_final_snapshot = true  # set false for production to keep a final backup
 
@@ -159,7 +158,7 @@ resource "aws_db_instance" "shopflow_db" {
 # They run as a null_resource using psql — no extra tools needed.
 # ─────────────────────────────────────────────────────────────
 
-/*resource "null_resource" "create_databases" {
+resource "null_resource" "create_databases" {
   # Re-run if the RDS instance is replaced
   triggers = {
     rds_instance_id = aws_db_instance.shopflow_db.id
@@ -181,4 +180,4 @@ resource "aws_db_instance" "shopflow_db" {
   }
 
   depends_on = [aws_db_instance.shopflow_db]
-}*/
+}

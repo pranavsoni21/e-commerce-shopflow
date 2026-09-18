@@ -28,3 +28,13 @@ output "ebs_csi_role_arn" {
   description = "Pass to aws_eks_addon ebs-csi-driver as service_account_role_arn"
   value       = aws_iam_role.ebs_csi_role.arn
 }
+
+
+output "notification_svc_role_arn" {
+  value = aws_iam_role.notification_svc.arn
+}
+
+output "load_balancer_controller_role_arn" {
+  description = "IAM role ARN for AWS Load Balancer Controller"
+  value       = aws_iam_role.load_balancer_controller.arn
+}

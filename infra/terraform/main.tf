@@ -56,7 +56,7 @@ module "monitoring" {
   source = "./modules/monitoring-ec2"
   tags   = local.tags
 
-  vpc_id = module.vpc.vpc_id
+  vpc_id            = module.vpc.vpc_id
   public_subnet_ids = module.vpc.public_subnets_id
 }
 

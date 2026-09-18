@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/pranavsoni21/e-commerce-shopflow
     targetRevision: main
-    path: infra/argocd        # ← points to the folder with all app yamls
+    path: infra/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

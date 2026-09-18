@@ -42,8 +42,8 @@ spec:
           - name: DATABASE_URL
             valueFrom:
               secretKeyRef:
-                name: order-svc-secrets
-                key: database_url
+                name: shopflow-db
+                key: ORDER_DATABASE_URL
 
           resources:
             requests:
