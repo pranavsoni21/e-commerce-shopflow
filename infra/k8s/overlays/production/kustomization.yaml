@@ -12,6 +12,7 @@ resources:
 images:
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/frontend
+  newTag: 10ace556d2042afaa90a33a1e73f8690b9edf100
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/notification
   newTag: a34eec96a80863f02a851e38d42570fabc19c12c
