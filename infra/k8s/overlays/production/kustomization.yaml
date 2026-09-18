@@ -24,3 +24,4 @@ images:
   newTag: a34eec96a80863f02a851e38d42570fabc19c12c
 - name: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
   newName: 156084119771.dkr.ecr.ap-south-1.amazonaws.com/shopflow/user
+  newTag: a34eec96a80863f02a851e38d42570fabc19c12c
