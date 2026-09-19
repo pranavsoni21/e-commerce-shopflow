@@ -168,13 +168,26 @@ resource "null_resource" "create_databases" {
     # Uses the psql client on the machine running terraform apply
     # In CI/CD this runs from GitHub Actions runner (has psql installed)
     command = <<-EOT
-      PGPASSWORD=${var.db_password} psql \
-        -h ${aws_db_instance.shopflow_db.address} \
-        -U ${var.db_username} \
-        -d shopflow \
-        -c "CREATE DATABASE userdb;" \
-        -c "CREATE DATABASE productdb;" \
-        -c "CREATE DATABASE orderdb;" || true
+      export PGPASSWORD='${var.db_password}'
+    
+      for db in userdb productdb orderdb; do
+        EXISTS=$(psql \
+          -h '${aws_db_instance.shopflow_db.address}' \
+          -U '${var.db_username}' \
+          -d postgres \
+          -tAc "SELECT 1 FROM pg_database WHERE datname='$db'")
+    
+        if [ "$EXISTS" != "1" ]; then
+          psql \
+            -h '${aws_db_instance.shopflow_db.address}' \
+            -U '${var.db_username}' \
+            -d postgres \
+            -v ON_ERROR_STOP=1 \
+            -c "CREATE DATABASE \"$db\""
+        else
+          echo "Database $db already exists"
+        fi
+      done
     EOT
     # || true means if databases already exist, don't fail terraform apply
   }
