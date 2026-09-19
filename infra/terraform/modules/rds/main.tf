@@ -148,49 +148,4 @@ resource "aws_db_instance" "shopflow_db" {
 }
 
 
-# ─────────────────────────────────────────────────────────────
-# PER-SERVICE DATABASES
-# Each service gets its own database inside the same instance.
-# Services are completely isolated at the database level —
-# user-svc cannot accidentally query productdb.
-#
-# These are created AFTER the RDS instance is ready.
-# They run as a null_resource using psql — no extra tools needed.
-# ─────────────────────────────────────────────────────────────
 
-resource "null_resource" "create_databases" {
-  # Re-run if the RDS instance is replaced
-  triggers = {
-    rds_instance_id = aws_db_instance.shopflow_db.id
-  }
-
-  provisioner "local-exec" {
-    # Uses the psql client on the machine running terraform apply
-    # In CI/CD this runs from GitHub Actions runner (has psql installed)
-    command = <<-EOT
-      export PGPASSWORD='${var.db_password}'
-    
-      for db in userdb productdb orderdb; do
-        EXISTS=$(psql \
-          -h '${aws_db_instance.shopflow_db.address}' \
-          -U '${var.db_username}' \
-          -d postgres \
-          -tAc "SELECT 1 FROM pg_database WHERE datname='$db'")
-    
-        if [ "$EXISTS" != "1" ]; then
-          psql \
-            -h '${aws_db_instance.shopflow_db.address}' \
-            -U '${var.db_username}' \
-            -d postgres \
-            -v ON_ERROR_STOP=1 \
-            -c "CREATE DATABASE \"$db\""
-        else
-          echo "Database $db already exists"
-        fi
-      done
-    EOT
-    # || true means if databases already exist, don't fail terraform apply
-  }
-
-  depends_on = [aws_db_instance.shopflow_db]
-}
